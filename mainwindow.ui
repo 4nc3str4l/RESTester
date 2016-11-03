@@ -190,13 +190,13 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Response Headers</string>
      </attribute>
-     <widget class="QPlainTextEdit" name="txtResult">
+     <widget class="QPlainTextEdit" name="txtHeaders">
       <property name="geometry">
        <rect>
         <x>-1</x>
@@ -211,7 +211,7 @@
      <attribute name="title">
       <string>Response Body (Raw)</string>
      </attribute>
-     <widget class="QPlainTextEdit" name="txtResult_2">
+     <widget class="QPlainTextEdit" name="txtResponseRaw">
       <property name="geometry">
        <rect>
         <x>-1</x>
@@ -222,11 +222,11 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_3">
+    <widget class="QWidget" name="widget">
      <attribute name="title">
       <string>Response Body (Highlight)</string>
      </attribute>
-     <widget class="QPlainTextEdit" name="txtResult_3">
+     <widget class="QPlainTextEdit" name="txtResponseHighlight">
       <property name="geometry">
        <rect>
         <x>-1</x>
@@ -241,7 +241,7 @@
      <attribute name="title">
       <string>Response Body (preview)</string>
      </attribute>
-     <widget class="QPlainTextEdit" name="txtResult_4">
+     <widget class="QPlainTextEdit" name="txtResponsePreview">
       <property name="geometry">
        <rect>
         <x>-1</x>

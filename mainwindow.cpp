@@ -19,6 +19,16 @@ MainWindow::~MainWindow()
 }
 
 
+QString getResponeHeaders(QNetworkReply *reply)
+{
+    QString headers("<br><strong>Code</strong>    :   "+ reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toString() +"<br>");
+    foreach(const QNetworkReply::RawHeaderPair& rawHeaderPair, reply->rawHeaderPairs())
+    {
+        headers.append("<br><strong>"+ rawHeaderPair.first +"</strong>    :   " + rawHeaderPair.second +"<br>");
+    }
+    return headers;
+}
+
 void MainWindow::on_pushButton_clicked()
 {
     // create custom temporary event loop on stack
@@ -35,7 +45,9 @@ void MainWindow::on_pushButton_clicked()
 
     if (reply->error() == QNetworkReply::NoError) {
         //success
-        ui->txtResult->appendHtml(reply->readAll());
+        ui->txtResponseRaw->appendPlainText(reply->readAll());
+        ui->txtResponsePreview->appendHtml(reply->readAll());
+        ui->txtHeaders->appendHtml(getResponeHeaders(reply));
         delete reply;
     }
     else
