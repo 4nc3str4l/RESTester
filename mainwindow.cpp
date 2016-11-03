@@ -5,6 +5,7 @@
 #include <QNetworkAccessManager>
 #include <QtNetwork\QNetworkRequest>
 #include <QtNetwork\QNetworkReply>
+#include "highlighter.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -43,11 +44,15 @@ void MainWindow::on_pushButton_clicked()
     QNetworkReply *reply = mgr.get(req);
     eventLoop.exec(); // blocks stack until "finished()" has been called
 
+    Highlighter *highlighter = new Highlighter(ui->txtResponseHighlight->document());
+
     if (reply->error() == QNetworkReply::NoError) {
         //success
-        ui->txtResponseRaw->appendPlainText(reply->readAll());
-        ui->txtResponsePreview->appendHtml(reply->readAll());
+        QByteArray data = reply->readAll();
         ui->txtHeaders->appendHtml(getResponeHeaders(reply));
+        ui->txtResponseRaw->appendPlainText(data);
+        ui->txtResponseHighlight->setPlainText(data);
+        ui->txtPreview->appendHtml(data);
         delete reply;
     }
     else

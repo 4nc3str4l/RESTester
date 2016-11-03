@@ -5,9 +5,10 @@
 #-------------------------------------------------
 
 QT += core gui
+QT += printsupport
 
+greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += network
 
 TARGET = ComTester
@@ -15,9 +16,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    highlighter.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    highlighter.h
 
 FORMS    += mainwindow.ui
 

@@ -241,7 +241,7 @@
      <attribute name="title">
       <string>Response Body (preview)</string>
      </attribute>
-     <widget class="QPlainTextEdit" name="txtResponsePreview">
+     <widget class="QPlainTextEdit" name="txtPreview">
       <property name="geometry">
        <rect>
         <x>-1</x>
